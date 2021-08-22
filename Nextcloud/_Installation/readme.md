@@ -9,6 +9,8 @@ If you want less/other apps to be installed just edit setup.sh accordingly.
 ## Prerequisites
 
 * Traefik
+* Nextcloud URL pointing to your server
+* Collabora URL pointing to your server
 
 This setup only works if you have Traefik installed.
 Be sure to install it from my Docker-Atelier aswell or read this tutorial which I used.
