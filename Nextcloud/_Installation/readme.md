@@ -13,20 +13,17 @@ Check out all files used in the script if you are curious ;)
 
 ## Installation
 
-*Open docker-compose.yml and change all values marked with # behind it! ctl+s to save, ctl+x to close
-
+Open docker-compose.yml and change all values marked with # behind it! ctl+s to save, ctl+x to close
 ```
 nano ../docker-compose.yml
 ```
 
-*Make setup.sh executable
-
+Make setup.sh executable
 ```
 chmod +x setup.sh
 ```
 
-*run setup.sh
-
+run setup.sh
 ```
 ./setup.sh
 ```
