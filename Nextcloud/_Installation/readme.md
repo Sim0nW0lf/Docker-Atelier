@@ -1,6 +1,6 @@
 # Installing Nextcloud
 
-You only have to configure docker-compose.yml, create a data folder owned by www-data and execute setup.sh
+You only have to configure docker-compose.yml and execute setup.sh
 
 This script will not only install Nextcloud, selected apps and collabora ready to be used.
 It also schedules cronjobs to your root user to keep Nextcloud updated.
