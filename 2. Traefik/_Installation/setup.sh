@@ -38,6 +38,10 @@ echo "Replacing user:password in docker-compose.yml"
 echo ""
 sed -i "s,$u,$p," ../docker-compose.yml
 
+echo "Enter you E-Mail here:"
+read email
+sed -i "s,example-email@mymail.com,$email," ../Container-Data/data/traefik.yml
+
 #create proxy network
 docker network create proxy
 
