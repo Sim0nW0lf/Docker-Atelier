@@ -65,22 +65,30 @@ echo "*****************************"
 docker exec --user www-data nextcloud_app ./occ app:enable approval
 docker exec --user www-data nextcloud_app ./occ app:enable auto_groups
 docker exec --user www-data nextcloud_app ./occ app:enable breezedark
+docker exec --user www-data nextcloud_app ./occ app:enable checksum
 docker exec --user www-data nextcloud_app ./occ app:enable camerarawpreviews
 docker exec --user www-data nextcloud_app ./occ app:enable richdocuments
 docker exec --user www-data nextcloud_app ./occ app:enable cospend
+docker exec --user www-data nextcloud_app ./occ app:enable electronicsignatures
 docker exec --user www-data nextcloud_app ./occ app:enable external
 docker exec --user www-data nextcloud_app ./occ app:enable files_external
 docker exec --user www-data nextcloud_app ./occ app:enable extract
+docker exec --user www-data nextcloud_app ./occ app:enable integration_google
 docker exec --user www-data nextcloud_app ./occ app:enable impersonate
 docker exec --user www-data nextcloud_app ./occ app:enable issuetemplate
 docker exec --user www-data nextcloud_app ./occ app:enable files_markdown
 docker exec --user www-data nextcloud_app ./occ app:enable metadata
+docker exec --user www-data nextcloud_app ./occ app:enable files_mindmap
 docker exec --user www-data nextcloud_app ./occ app:enable previewgenerator
 docker exec --user www-data nextcloud_app ./occ app:enable registration
+docker exec --user www-data nextcloud_app ./occ app:enable sendent
 docker exec --user www-data nextcloud_app ./occ app:enable files_snapshots
+docker exec --user www-data nextcloud_app ./occ app:enable sociallogin
 docker exec --user www-data nextcloud_app ./occ app:enable unsplash
+docker exec --user www-data nextcloud_app ./occ app:enable spreed
 docker exec --user www-data nextcloud_app ./occ app:enable tasks
 docker exec --user www-data nextcloud_app ./occ app:enable video_converter
+docker exec --user www-data nextcloud_app ./occ app:enable files_zip
 
 echo ""
 echo "Setting Collabora URL in Nextcloud"
