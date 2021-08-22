@@ -1,0 +1,12 @@
+
+#
+#NEXTCLOUD CRONTABS
+#
+
+#UPDATE every Sunday at 4am
+0 4 * * Sun /YOURPATH/update.sh
+#UPDATE APPS every Day at 5am
+0 5 * * * docker exec --user www-data nextcloud_app php occ app:update --all
+#Pre-Generate Previews
+*/60 * * * * docker exec --user www-data nextcloud_app php occ preview:pre-generate
+

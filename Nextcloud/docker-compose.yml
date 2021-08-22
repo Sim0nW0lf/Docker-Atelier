@@ -1,0 +1,117 @@
+# marked files with ### are setup.sh script relevant! If you change them, also change setup script.
+# marked files with # need to be changed.
+version: "3.8"
+services:
+  db:
+    image: mariadb:10.5
+    container_name: nextcloud_db
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - ./Container-Data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=*************  #change password
+      - MYSQL_PASSWORD=*************  #change password
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+      - default
+
+  redis:
+    image: redis:alpine
+    container_name: nextcloud_redis
+    restart: always
+    networks:
+        - default
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: nextcloud_app  ###
+    restart: always
+    volumes:
+      - ./Container-Data/html:/var/www/html  ###
+      - /media/NC2/ncdata:/media/ncdata  #you need to create your data folder and set owner to www-data (chown www-data:www-data /your/data/dir)
+      #- /Docker:/Docker  #you can also add additional paths and import them as external storage for example
+    environment:
+      - NEXTCLOUD_DATA_DIR=/media/ncdata
+      - REDIS_HOST=redis
+      #SKIP SETUP PAGE with these variables
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=*************  #same db password as upove
+      - MYSQL_HOST=db
+      - NEXTCLOUD_ADMIN_USER=root
+      - NEXTCLOUD_ADMIN_PASSWORD=*************  #change password
+      #Email (gmail as example here, all values need to be set for Nextcloud to save email config.)
+      - SMTP_HOST=smtp.gmail.com  #
+      - SMTP_SECURE=ssl  #
+      - SMTP_AUTHTYPE=LOGIN  #
+      - SMTP_NAME=examplename@gmail.com  #
+      - SMTP_PASSWORD=*************  #
+      - MAIL_FROM_ADDRESS=examplename  #
+      - MAIL_DOMAIN=cloud.example.com  #
+      #Networking
+      - TRUSTED_PROXIES=172.19.0.X/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITEHOST=cloud.example.com  #set url (cloud.example.com)
+      #PHP
+      - PHP_MEMORY_LIMIT=20G
+      - PHP_UPLOAD_LIMIT=50G
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud-app.entrypoints=http"
+      - "traefik.http.routers.nextcloud-app.rule=Host(`cloud.example.com`)"  #set url (cloud.example.com)
+      - "traefik.http.middlewares.nextcloud-app-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.nextcloud-app.middlewares=nextcloud-app-https-redirect"
+      - "traefik.http.routers.nextcloud-app-secure.entrypoints=https"
+      - "traefik.http.routers.nextcloud-app-secure.rule=Host(`cloud.example.com`)"  #set url (cloud.example.com)
+      - "traefik.http.routers.nextcloud-app-secure.tls=true"
+      - "traefik.http.routers.nextcloud-app-secure.tls.certresolver=http"
+      - "traefik.http.routers.nextcloud-app-secure.service=nextcloud-app"
+      - "traefik.http.services.nextcloud-app.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.nextcloud-app-secure.middlewares=nextcloud-dav,secHeaders@file"
+      - "traefik.http.middlewares.nextcloud-dav.replacepathregex.regex=^/.well-known/ca(l|rd)dav"
+      - "traefik.http.middlewares.nextcloud-dav.replacepathregex.replacement=/remote.php/dav/"
+      - "traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/"
+    networks:
+      - proxy
+      - default
+    depends_on:
+      - db
+      - redis
+
+  collabora:
+    image: collabora/code:latest-arm64  #select image fitting your CPU architecture from here: https://hub.docker.com/r/collabora/code/tags?page=1&ordering=last_updated
+    container_name: nextcloud_collabora
+    networks:
+      - proxy
+    cap_add:
+      - MKNOD
+    expose:
+      - 9980
+    environment:
+      - domain=cloud.example.com  #set url (cloud.example.com)
+      - "extra_params=--o:ssl.enable=false --o:ssl.termination=true"
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.collabora.entrypoints=http"
+      - "traefik.http.routers.collabora.rule=Host(`collabora.example.com`)"  #set url (collabora.example.com)
+      - "traefik.http.middlewares.collabora-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.collabora.middlewares=collabora-https-redirect"
+      - "traefik.http.routers.collabora-secure.entrypoints=https"
+      - "traefik.http.routers.collabora-secure.rule=Host(`collabora.example.com`)"  #set url (collabora.example.com)
+      - "traefik.http.routers.collabora-secure.tls=true"
+      - "traefik.http.routers.collabora-secure.tls.certresolver=http"
+      - "traefik.http.routers.collabora-secure.service=collabora"
+      - "traefik.http.services.collabora.loadbalancer.server.port=9980"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.collabora-secure.middlewares=secHeaders@file"
+
+networks:
+  proxy:
+    external: true
