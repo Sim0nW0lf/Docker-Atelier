@@ -42,3 +42,13 @@ This will take a while, about 5 minutes.
 Be patient and **enjoy your NC Installation!**
 
 ## Remove Nextcloud
+
+This is how you can delete all files belonging to this Nextcloud installation.
+Now you could setup a completely new instance.
+```
+cd /your/docker-nextcloud/directory
+docker-compose down
+docker image prune -a
+rm -r Container-Data
+rm -r /your/data/dir
+```
