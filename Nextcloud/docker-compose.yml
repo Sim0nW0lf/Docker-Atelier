@@ -32,7 +32,7 @@ services:
     restart: always
     volumes:
       - ./Container-Data/html:/var/www/html  ###
-      - /media/NC2/ncdata:/media/ncdata  #you need to create your data folder and set owner to www-data (chown www-data:www-data /your/data/dir)
+      - /media/NC2/ncdata:/media/ncdata  #change ONLY LEFT part. My script will create the directory/change permissions
       #- /Docker:/Docker  #you can also add additional paths and import them as external storage for example
     environment:
       - NEXTCLOUD_DATA_DIR=/media/ncdata
