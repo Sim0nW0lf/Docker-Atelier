@@ -1,4 +1,0 @@
-Change the necessary values in the docker-compose.yml
-
-Then run the setup script!
-THAT'S IT!
