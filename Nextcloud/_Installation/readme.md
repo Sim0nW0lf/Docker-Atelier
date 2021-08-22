@@ -23,12 +23,6 @@ Open docker-compose.yml and change all values marked with # behind it! ctl+s to 
 nano ../docker-compose.yml
 ```
 
-create data directory
-```
-mkdir -p /your/data/dir
-chown www-data:www-data /your/data/dir -R
-```
-
 Make setup.sh executable
 ```
 chmod +x setup.sh
