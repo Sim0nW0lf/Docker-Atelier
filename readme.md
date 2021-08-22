@@ -7,8 +7,8 @@ I hope you can profit from my automations, I surely do!
 
 ## Installation
 
-*Install Docker & Docker-Compose
+* Install Docker & Docker-Compose
 
-*Install Traefik
+* Install Traefik
 
-*Install any other app from this Atelier
+* Install any other app from this Atelier
