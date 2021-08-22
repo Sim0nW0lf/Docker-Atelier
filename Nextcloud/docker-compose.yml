@@ -1,4 +1,4 @@
-# marked files with ### are setup.sh script relevant! If you change them, also change setup script.
+# marked files with ### are setup.sh script relevant! If you change them, you also need to change the setup script.
 # marked files with # need to be changed.
 version: "3.8"
 services:
