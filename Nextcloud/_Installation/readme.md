@@ -8,7 +8,7 @@ It also schedules cronjobs to your root user to keep Nextcloud updated.
 ## Prerequisites
 
 This setup only works if you have Traefik installed.
-Be sure to install it from my Docker-Artelier aswell or read this tutorial which I used.
+Be sure to install it from my Docker-Atelier aswell or read this tutorial which I used.
 You probably need to change "wg" to make Traefik env variables work.
 https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/
 
