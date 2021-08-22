@@ -22,6 +22,11 @@ echo "*****************************"
 echo "This will take a fiew minutes"
 echo "..."
 echo ""
+
+#create data dir/change permissions
+mkdir -p "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
+chown www-data:www-data -R "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
+
 docker-compose -f ../docker-compose.yml build --pull -q
 docker-compose -f ../docker-compose.yml up -d --quiet-pull
 
