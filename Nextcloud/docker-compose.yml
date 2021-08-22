@@ -51,9 +51,9 @@ services:
       - SMTP_NAME=examplename@gmail.com  #
       - SMTP_PASSWORD=*************  #
       - MAIL_FROM_ADDRESS=examplename  #
-      - MAIL_DOMAIN=cloud.example.com  #
+      - MAIL_DOMAIN=gmail.com  #
       #Networking
-      - TRUSTED_PROXIES=172.19.0.X/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen
+      - TRUSTED_PROXIES=172.X.X.X/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen
       - OVERWRITEPROTOCOL=https
       - OVERWRITEHOST=cloud.example.com  #set url (cloud.example.com)
       #PHP
