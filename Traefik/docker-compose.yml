@@ -1,3 +1,4 @@
+# marked files with ### are setup.sh script relevant! If you change them, you also need to change the setup script.
 #change values marked with # (only 3 labels need to be changed)
 version: '3'
 services:
@@ -8,7 +9,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - proxy
+      - proxy  ###
     ports:
       - 80:80
       - 443:443
@@ -33,5 +34,5 @@ services:
       - "providers.file.filename=/dynamic_conf.yml"
       - "traefik.http.routers.traefik-secure.middlewares=secHeaders@file,traefik-auth"
 networks:
-  proxy:
+  proxy:  ###
     external: true
