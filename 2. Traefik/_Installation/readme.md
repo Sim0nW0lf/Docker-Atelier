@@ -8,6 +8,11 @@ This instsallation will give you a SSL Labs A+ rating.
 I followed this tutorial and scripted the password part that had to be done manually.
 All credits go to: https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/
 
+## Prerequisites
+
+* Traefik URL pointing to your server (something like traefik.exampleserver.com)
+* Port 80 & 443 opened
+
 ## Installation
 
 Change the necessary values in the docker-compose.yml
