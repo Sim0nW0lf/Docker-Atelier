@@ -1,5 +1,5 @@
-Installing Nextcloud should be easy!
-Now it is...
+# Installing Nextcloud should be easy!
+## Now it is...
 
 #
 #This setup only works if you have Traefik installed.
