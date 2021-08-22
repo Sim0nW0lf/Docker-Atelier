@@ -15,6 +15,10 @@ echo ""
 sudo apt-get -qq update
 sudo apt-get -qq install apache2-utils -y
 
+#creating acme.json
+touch ../Container-Data/data/acme.json
+chmod 600 ../Container-Data/data/acme.json
+
 #
 #Generate User:Password
 #
