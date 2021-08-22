@@ -1,6 +1,9 @@
 # Installing Nextcloud
 
-You only have to configure docker-compose.yml and execute setup.sh
+You only have to configure docker-compose.yml, create a data folder owned by www-data and execute setup.sh
+
+This script will not only install Nextcloud, selected apps and collabora ready to be used.
+It also schedules cronjobs to your root user to keep Nextcloud updated.
 
 ## Prerequisites
 
@@ -12,11 +15,17 @@ https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einric
 For the following commands I assume you are in the _Installation directory!
 Check out all files used in the script if you are curious what is happening ;)
 
-## Installation
+## Install Nextcloud
 
 Open docker-compose.yml and change all values marked with # behind it! ctl+s to save, ctl+x to close
 ```
 nano ../docker-compose.yml
+```
+
+create data directory
+```
+mkdir -p /your/data/dir
+chown www-data:www-data /your/data/dir -R
 ```
 
 Make setup.sh executable
@@ -31,3 +40,5 @@ run setup.sh
 
 This will take a while, about 5 minutes.
 Be patient and **enjoy your NC Installation!**
+
+## Remove Nextcloud
