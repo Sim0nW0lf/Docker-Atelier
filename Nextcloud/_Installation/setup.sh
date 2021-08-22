@@ -97,6 +97,9 @@ sed -i 's!/YOURPATH!'${PWD::-14}'!' mycron
 crontab mycron
 rm mycron
 
+#make update.sh executeable
+chmod +x ../update.sh
+
 echo ""
 echo "*****************************************************"
 echo "*                                                   *"
