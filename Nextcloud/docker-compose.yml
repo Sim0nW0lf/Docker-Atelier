@@ -85,7 +85,7 @@ services:
       - redis
 
   collabora:
-    image: collabora/code:latest-arm64  #select image fitting your CPU architecture (uname -a) from here: https://hub.docker.com/r/collabora/code/tags?page=1&ordering=last_updated
+    image: collabora/code:latest  #latest-arm64  #latest-amd64  #select image fitting your CPU architecture (uname -a) from here: https://hub.docker.com/r/collabora/code/tags?page=1&ordering=last_updated
     container_name: nextcloud_collabora
     networks:
       - proxy
