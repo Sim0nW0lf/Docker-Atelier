@@ -24,7 +24,7 @@ echo \
 
 apt-get -qq update
 
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get -qq install docker-ce docker-ce-cli containerd.io
 
 #
 #install docker-compose
