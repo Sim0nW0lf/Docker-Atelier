@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    environment:
+      WATCHTOWER_SCHEDULE: 0 0 4 * * *  (update every night at 4am) https://pkg.go.dev/github.com/robfig/cron@v1.2.0?tab=doc#hdr-CRON_Expression_Format
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_NOTIFICATIONS: email  #(Just delete all email labels if you don't want any notifications)
+      WATCHTOWER_NOTIFICATION_EMAIL_FROM: exampleserver@gmail.com  #
+      WATCHTOWER_NOTIFICATION_EMAIL_TO: youremail@gmail.com  #
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER: smtp.gmail.com  #
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT: 465
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER: exampleserver@gmail.com  #
+      WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD: *************  #
+      WATCHTOWER_NOTIFICATION_EMAIL_DELAY: 2
