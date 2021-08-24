@@ -46,6 +46,30 @@ chmod +x setup.sh
 This will take a while, about 5 minutes.
 Be patient and **enjoy your NC Installation!**
 
+## Immigrating existing Nextcloud Installation
+
+This shows how to immigrate another Nextcloud Docker Installation with MariaDB.
+For more complex immigrations like PostgreSQL, or from a native Nextcloud installation just goole it.
+
+* Install Nextcloud just [like explained](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/Nextcloud/_Installation#installation) but use the same password for your database as the old installation
+* Then cd /to/your/new/ncInstallation
+```
+docker-compose stop
+```
+* now copy your old files to the new data directory & copy your database files to /Container-Data/db/. That is necessary because these values are unique and connected to the database.
+* also replace the values of `'instanceid' =>`, `'secret' =>` and `'passwordsalt' =>`
+```
+nano Container-Data/html/config/config.php
+```
+* now start Nextcloud again
+```
+docker-compose up -d
+```
+* and scan your files
+```
+docker exec --user www-data nextcloud_app ./occ files:scan --all
+```
+
 ## Remove Nextcloud
 
 This is how you can delete all files belonging to this Nextcloud installation.
