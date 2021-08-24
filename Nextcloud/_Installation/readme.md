@@ -4,7 +4,7 @@ You only have to configure [docker-compose.yml](https://github.com/Sim0nW0lf/Doc
 
 This script will not only install Nextcloud, selected apps and collabora ready to be used.
 It also schedules cronjobs to your root user to keep Nextcloud updated.
-If you want less/other apps to be installed just edit setup.sh accordingly.
+If you want less/other Nextcloud apps to be installed just edit setup.sh accordingly.
 
 I would suggest also to install [Watchtower](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/Watchtower) to keep Collabora and your other apps updated aswell.
 
