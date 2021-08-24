@@ -67,6 +67,7 @@ docker-compose up -d
 ```
 * and scan your files
 ```
+chown www-data:www-data /path/to/your/data -R
 docker exec --user www-data nextcloud_app ./occ files:scan --all
 ```
 
