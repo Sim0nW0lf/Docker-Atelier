@@ -50,6 +50,8 @@ Be patient and **enjoy your NC Installation!**
 
 This is how you can delete all files belonging to this Nextcloud installation.
 Now you could setup a completely new instance.
+
+**Be careful!** If you delete your Container-Data and your data dir, all files and user Information will be lost.
 ```
 cd /your/docker-nextcloud/directory
 docker-compose down
