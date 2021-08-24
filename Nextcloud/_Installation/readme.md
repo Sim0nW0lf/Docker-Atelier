@@ -11,6 +11,7 @@ I would suggest also to install [Watchtower](https://github.com/Sim0nW0lf/Docker
 Fresh Nextcloud instance after installation looks like this:
 ![Nextcloud Login](https://user-images.githubusercontent.com/31454341/130644123-640b51bd-5a0b-4e18-9575-bb4079277b14.jpg)
 ![Nextcloud Collabora Integration](https://user-images.githubusercontent.com/31454341/130644941-8383294c-7009-4aff-93fa-771ec0cf051e.png)
+![Nextcloud Security](https://user-images.githubusercontent.com/31454341/130649437-075a4c08-b80d-4c77-af15-afc3617d913d.png)
 
 
 ## Prerequisites
