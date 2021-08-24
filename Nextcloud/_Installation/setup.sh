@@ -23,16 +23,20 @@ echo "This will take a fiew minutes"
 echo "..."
 echo ""
 
+#get path of script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR"
+
 #create data dir/change permissions
 mkdir -p "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
 chown www-data:www-data -R "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
 
+#add traefik ip to trusted proxies
+sed -i 's!- OVERWRITEPROTOCOL=https!- TRUSTED_PROXIES=$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)/16\n      - OVERWRITEPROTOCOL=https!' ../docker-compose.yml
+
+#install nextcloud
 docker-compose -f ../docker-compose.yml build --pull -q
 docker-compose -f ../docker-compose.yml up -d --quiet-pull
-
-#get path of script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-cd "$SCRIPT_DIR"
 
 echo ""
 echo "Waiting for Nextcloud to finish installation process"
