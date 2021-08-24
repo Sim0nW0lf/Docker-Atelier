@@ -12,3 +12,10 @@ I hope you can profit from my automations, I surely do!
 * Install Traefik
 
 * Install any other app from this Atelier
+
+## App Overview
+
+* [docker-compose](https://github.com/docker/compose) slim well known docker manager
+* [Traefik](https://github.com/traefik/traefik) dynamic apache proxy
+* [Nextcloud](https://github.com/nextcloud/docker) powerful cloud
+* [Watchtower](https://github.com/containrrr/watchtower) update docker containers automatically
