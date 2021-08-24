@@ -8,16 +8,19 @@ If you want less/other Nextcloud apps to be installed just edit setup.sh accordi
 
 I would suggest also to install [Watchtower](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/Watchtower) to keep Collabora and your other apps updated aswell.
 
+Fresh Nextcloud instance after installation looks like this:
+![Nextcloud Login](https://user-images.githubusercontent.com/31454341/130644123-640b51bd-5a0b-4e18-9575-bb4079277b14.jpg)
+![Nextcloud Collabora Integration](https://user-images.githubusercontent.com/31454341/130644941-8383294c-7009-4aff-93fa-771ec0cf051e.png)
+
+
 ## Prerequisites
 
-* Traefik
+* [Traefik](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/2.%20Traefik)
 * Nextcloud URL pointing to your server (something like cloud.exampleserver.com)
 * Collabora URL pointing to your server (something like collabora.exampleserver.com)
 
 This setup only works if you have Traefik installed.
-Be sure to install it from my Docker-Atelier aswell or read this [tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/) which I used.
-
-If you already have Traefik installed then you probably need to change "wg" to make Traefik env variables work.
+Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Docker-Atelier) aswell or read this [tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/) which I used.
 
 ## Installation
 
