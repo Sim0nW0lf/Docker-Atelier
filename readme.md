@@ -7,9 +7,9 @@ I hope you can profit from my automations, I surely do!
 
 ## Installation
 
-* Install Docker & Docker-Compose
+* Install [Docker & Docker-Compose](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/1.%20Docker%20%26%20Docker-Compose)
 
-* Install Traefik
+* Install [Traefik](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/2.%20Traefik/_Installation)
 
 * Install any other app from this Atelier
 
