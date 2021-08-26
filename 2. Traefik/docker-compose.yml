@@ -1,5 +1,9 @@
+# Only change these values here if you DON'T want to use my script!
+# It will change the necessary values for you...
 # marked lines with ### are setup.sh script relevant! If you change them, you also need to change the setup script.
-# change values marked with # (only 3 labels need to be changed)
+
+#If you want to setup traefik manually:
+# change values marked with # and launch using "docker-compose up -d"
 version: '3'
 services:
   traefik:
@@ -23,7 +27,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
       - "traefik.http.routers.traefik.rule=Host(`traefik.example.com`)"  #your Traefik URL traefik.example.com
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=USER:PASSWORD"  #USER:PASSWORD
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=USER:PASSWORD"  #USER:PASSWORD (Password generated with htpasswd. See here: https://mindup.medium.com/add-basic-authentication-in-docker-compose-files-with-traefik-34c781234970)
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
