@@ -26,12 +26,12 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.example.com`)"  #your Traefik URL traefik.example.com
+      - "traefik.http.routers.traefik.rule=Host(`traefik.example.com`)"  #your Traefik domain (Something like traefik.serverdomain.com)
       - "traefik.http.middlewares.traefik-auth.basicauth.users=USER:PASSWORD"  #USER:PASSWORD (Password generated with htpasswd. See here: https://mindup.medium.com/add-basic-authentication-in-docker-compose-files-with-traefik-34c781234970)
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.example.com`)"  #your Traefik URL traefik.example.com
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.example.com`)"  #your Traefik domain (Something like traefik.serverdomain.com)
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=http"
       - "traefik.http.routers.traefik-secure.service=api@internal"
