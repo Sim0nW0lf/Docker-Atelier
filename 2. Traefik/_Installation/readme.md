@@ -11,7 +11,7 @@ I followed [this tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-do
 
 ## Prerequisites
 
-* Traefik URL pointing to your server (something like traefik.exampleserver.com)
+* Traefik URL pointing to your server (something like traefik.serverdomain.com)
 * Port 80 & 443 opened
 
 ## Installation
