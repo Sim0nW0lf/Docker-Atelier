@@ -16,8 +16,7 @@ I followed [this tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-do
 
 ## Installation
 
-Change the necessary values in the docker-compose.yml
-Then run the setup script!
+Run the setup script!
 ```
 chmod +x setup.sh
 ./setup.sh
