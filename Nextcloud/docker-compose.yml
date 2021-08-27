@@ -112,5 +112,5 @@ services:
       - "traefik.http.routers.collabora-secure.middlewares=secHeaders@file"
 
 networks:
-  proxy:
+  proxy:  ###
     external: true
