@@ -56,17 +56,13 @@ echo ""
 sudo docker-compose -f "../docker-compose.yml" up -d --quiet-pull
 
 echo ""
-echo "Waiting for Traefik to finish up its installation"
-echo ""
-while curl -s --head  --request GET https://${domain}/ | grep "200 OK" > /dev/null
-do
-  sleep 2
-done
-
-echo ""
 echo "*****************************************************"
 echo "*                                                   *"
 echo "*                 Congratulations!                  *"
 echo "*            Traefik is now installed.              *"
 echo "*                                                   *"
 echo "*****************************************************"
+
+echo ""
+echo "Please note that the web interface will need some time to be accessible!"
+echo ""
