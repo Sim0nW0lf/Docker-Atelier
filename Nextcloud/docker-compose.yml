@@ -56,7 +56,7 @@ services:
       - OVERWRITEPROTOCOL=https  ###
       - OVERWRITEHOST=cloud.example.com  #set url (cloud.example.com)
       #PHP
-      - PHP_MEMORY_LIMIT=20G
+      - PHP_MEMORY_LIMIT=2G
       - PHP_UPLOAD_LIMIT=50G
     labels:
       - com.centurylinklabs.watchtower.enable=false
