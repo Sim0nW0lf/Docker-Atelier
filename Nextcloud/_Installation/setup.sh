@@ -2,6 +2,7 @@
 
 #
 #This script
+#helps configuring docker-compose easily
 #installs Nextcloud
 #sets some conf.php variables
 #disables the recommended app and rich workspace
@@ -11,28 +12,84 @@
 #adds cronjobs for previews and NC updates
 #
 
-#root permissions until EOF
-sudo -s << EOF
-
 echo "*****************************"
 echo "*                           *"
 echo "*   Installing Nextcloud!   *"
 echo "*                           *"
 echo "*****************************"
-echo "This will take a fiew minutes"
-echo "..."
 echo ""
 
 #get path of script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd "$SCRIPT_DIR"
 
-#create data dir/change permissions
-mkdir -p "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
-chown www-data:www-data -R "$(cat ../docker-compose.yml | grep ':/media/ncdata' | sed 's,      - ,,' | cut -d':' -f 1)"
+echo ""
+echo "********************************"
+echo "*  Let's configure Nextcloud!  *"
+echo "********************************"
+echo ""
+
+echo ""
+echo "Enter your Nextcloud domain. (Something like cloud.serverdomain.com)"
+read domain
+sed -i 's/\(.*nextcloud-app.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
+sed -i 's/\(.*nextcloud-app-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
+sed -i 's/\(.*OVERWRITEHOST=\)[^ ]* \(.*\)/\1'${domain}' \2/g' ../docker-compose.yml
+sed -i 's/\(.* domain=\)[^ ]* \(.*\)/\1'${domain}' \2/g' ../docker-compose.yml
+
+echo ""
+echo "Nextcloud Admin Username:"
+read nc_user
+sed -i 's/\(.*NEXTCLOUD_ADMIN_USER=\)[^ ]* \(.*\)/\1'${nc_user}' \2/g' ../docker-compose.yml
+
+echo "Nextcloud Admin Password:"
+read nc_passwd
+sed -i 's/\(.*NEXTCLOUD_ADMIN_PASSWORD=\)[^ ]* \(.*\)/\1'${nc_passwd}' \2/g' ../docker-compose.yml
+
+echo ""
+read -r -p "Do you want to setup your smtp mail to send mails from Nextcloud? (Y/N): " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+  echo "Your SMTP Host (Something like smtp.gmail.com)"
+  read smtp_host
+  sed -i 's/\(.*SMTP_HOST=\)[^ ]* \(.*\)/\1'${smtp_host}' \2/g' ../docker-compose.yml
+  echo "Your SMTP Mail (Something like examplename@gmail.com)"
+  read smtp_mail
+  IFS="@" read mail_name mail_domain <<< "${smtp_mail}"
+  sed -i 's/\(.*SMTP_NAME=\)[^ ]* \(.*\)/\1'${smtp_mail}' \2/g' ../docker-compose.yml
+  sed -i 's/\(.*MAIL_FROM_ADDRESS=\)[^ ]* \(.*\)/\1'${mail_name}' \2/g' ../docker-compose.yml
+  sed -i 's/\(.*MAIL_DOMAIN=\)[^ ]* \(.*\)/\1'${mail_domain}' \2/g' ../docker-compose.yml
+  echo "Your email password:"
+  read smtp_passwd
+  sed -i 's/\(.*SMTP_PASSWORD=\)[^ ]* \(.*\)/\1'${smtp_passwd}' \2/g' ../docker-compose.yml
+fi
+
+echo ""
+echo "Set your NC Data Path! (like: /your/Path, it will be created if it doesn't exist."
+read nc_data
+sed -i 's!.*:/media/ncdata!      - '${nc_data}':/media/ncdata!' ../docker-compose.yml
+mkdir -p "${nc_data}"
+chown www-data:www-data -R "${nc_data}"
+echo ""
+echo "Now let's configure the database. You need to set MYSQL_ROOT_PASSWORD and MYSQL_PASSWORD (for Nextcloud)"
+echo "First enter your MYSQL_ROOT_PASSWORD:"
+read mysql_root
+sed -i 's/\(.*MYSQL_ROOT_PASSWORD=\)[^ ]* \(.*\)/\1'${mysql_root}' \2/g' ../docker-compose.yml
+echo "Now enter your MYSQL_PASSWORD:"
+read mysql
+sed -i 's/\(.*MYSQL_PASSWORD=\)[^ ]* \(.*\)/\1'${mysql}' \2/g' ../docker-compose.yml
+
+echo "Enter your Collabora domain. (Something like collabora.serverdomain.com)"
+read coll_domain
+sed -i 's/\(.*collabora.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \2/g' ../docker-compose.yml
+sed -i 's/\(.*collabora-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \2/g' ../docker-compose.yml
 
 #add traefik ip to trusted proxies
-sed -i 's!- OVERWRITEPROTOCOL=https!- TRUSTED_PROXIES=$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)/16\n      - OVERWRITEPROTOCOL=https!' ../docker-compose.yml
+traefik_ip="$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)"
+sed -i '/OVERWRITEPROTOCOL=/c\      - TRUSTED_PROXIES='${traefik_ip}'/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen\n      - OVERWRITEPROTOCOL=https  ###' ../docker-compose.yml
+
+echo "Setting up Nextcloud now. This will take a fiew minutes"
+echo "..."
 
 #install nextcloud
 docker-compose -f ../docker-compose.yml build --pull -q
@@ -125,5 +182,4 @@ echo "*    Netcloud is now ready and waiting for you.     *"
 echo "*                                                   *"
 echo "*****************************************************"
 
-EOF
 exit
