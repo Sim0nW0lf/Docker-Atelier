@@ -1,8 +1,8 @@
 # [Nextcloud](https://github.com/nextcloud/docker)
 
-You only have to configure [docker-compose.yml](https://github.com/Sim0nW0lf/Docker-Atelier/blob/7cdbfbeec14a4bca7738bd81aca236412a9e7493/Nextcloud/docker-compose.yml) and execute [setup.sh](https://github.com/Sim0nW0lf/Docker-Atelier/blob/7cdbfbeec14a4bca7738bd81aca236412a9e7493/Nextcloud/_Installation/setup.sh)
+You only have to execute [setup.sh](https://github.com/Sim0nW0lf/Docker-Atelier/blob/7cdbfbeec14a4bca7738bd81aca236412a9e7493/Nextcloud/_Installation/setup.sh)
 
-This script will not only install Nextcloud, selected apps and collabora ready to be used.
+This script will not only configure your installation, install Nextcloud, selected apps and collabora ready to be used.
 It also schedules cronjobs to your root user to keep Nextcloud updated.
 If you want less/other Nextcloud apps to be installed just edit setup.sh accordingly.
 
@@ -19,31 +19,23 @@ Fresh Nextcloud instance after installation looks like this:
 * [Traefik](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/2.%20Traefik)
 * Nextcloud URL pointing to your server (something like cloud.exampleserver.com)
 * Collabora URL pointing to your server (something like collabora.exampleserver.com)
+* If you want to receive mails from Nextcloud or use apps like register you need a SMTP Mail.
 
 This setup only works if you have Traefik installed.
-Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Docker-Atelier) aswell or read this [tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/) which I used.
+Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Docker-Atelier) aswell or read this [tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/) which I used for my Traefik script.
 
 ## Installation
 
 For the following commands I assume you are in the _Installation directory!
 Check out all files used in the script if you are curious what is happening ;)
 
-* Open docker-compose.yml and change all values marked with # behind it! ctl+s to save, ctl+x to close
-```
-nano ../docker-compose.yml
-```
-
-* Make setup.sh executable
+* Make setup.sh executable and run setup.sh
 ```
 chmod +x setup.sh
-```
-
-* run setup.sh
-```
 ./setup.sh
 ```
 
-This will take a while, about 5 minutes.
+This will take a while, after configuring your installation about 5 minutes.
 Be patient and **enjoy your NC Installation!**
 
 ## Remove Nextcloud
