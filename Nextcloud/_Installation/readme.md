@@ -153,8 +153,7 @@ chmod +x setup.sh
 sudo ./setup.sh
 ```
 
-This will take a while, after configuring your installation about 5 minutes.
-Be patient and **enjoy your NC Installation!**
+This will take a while, about 8 minutes. Be patient and **enjoy your NC Installation!**
 
 ## Remove Nextcloud
 
