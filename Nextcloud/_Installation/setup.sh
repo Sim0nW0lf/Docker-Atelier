@@ -86,7 +86,7 @@ sed -i 's/\(.*collabora-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \
 
 #add traefik ip to trusted proxies
 traefik_ip="$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)"
-sed -i '/OVERWRITEPROTOCOL=/c\      - TRUSTED_PROXIES='${traefik_ip}'/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen\n      - OVERWRITEPROTOCOL=https  ###' ../docker-compose.yml
+sed -i 's!\(.*TRUSTED_PROXIES=\)[^ ]* \(.*\)!\1'${traefik_ip}'/16 \2!g' ../docker-compose.yml
 
 echo "Setting up Nextcloud now. This will take a fiew minutes"
 echo "..."
