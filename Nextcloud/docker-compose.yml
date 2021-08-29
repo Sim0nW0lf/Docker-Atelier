@@ -53,6 +53,7 @@ services:
       - MAIL_FROM_ADDRESS=examplename  #
       - MAIL_DOMAIN=gmail.com  #
       #Networking
+      - TRUSTED_PROXIES=19.X.X.X/16  #"docker inspect traefik" to get IPAdress and IPPrefixLen
       - OVERWRITEPROTOCOL=https  ###
       - OVERWRITEHOST=cloud.example.com  #set url (cloud.example.com)
       #PHP
