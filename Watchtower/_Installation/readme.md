@@ -17,6 +17,7 @@ Enable two factor authentification, generate an app password and use that with y
 You can copy the Watchtower folder to the directory you want your instance to be installed.
 
 For the following commands I assume you are in the "_Installation" directory!
+* Make setup.sh executable and run setup.sh
 ```
 chmod +x setup.sh
 sudo ./setup.sh
