@@ -9,6 +9,123 @@ If you want less/other Nextcloud apps to be installed just edit setup.sh accordi
 
 I would suggest also to install [Watchtower](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/Watchtower) to keep Collabora and your other apps updated aswell.
 
+<details>
+<summary>Nextcloud demo Installation</summary>
+  
+```
+root@instance-20210825:/Docker/Nextcloud/_Installation# chmod +x setup.sh
+root@instance-20210825:/Docker/Nextcloud/_Installation# ./setup.sh
+*****************************
+*                           *
+*   Installing Nextcloud!   *
+*                           *
+*****************************
+
+
+********************************
+*  Let's configure Nextcloud!  *
+********************************
+
+Enter your Nextcloud domain. (Something like cloud.serverdomain.com)
+cloud.exampleserver.de
+
+Nextcloud Admin Username:
+admin
+Nextcloud Admin Password:
+****************
+
+Do you want to setup your smtp mail to send mails from Nextcloud? (Y/N): y
+Your SMTP Host (Something like smtp.gmail.com)
+smtp.gmail.com
+Your SMTP Mail (Something like examplename@gmail.com)
+mymailname@gmail.com
+Your email password:
+*****************
+
+Set your NC Data Path! (like: /your/Path, it will be created if it doesn't exist.
+/media/NC/ncdata
+
+Now let's configure the database. You need to set MYSQL_ROOT_PASSWORD and MYSQL_PASSWORD (for Nextcloud)
+First enter your MYSQL_ROOT_PASSWORD:
+****************
+Now enter your MYSQL_PASSWORD:
+***************
+
+Enter your Collabora domain. (Something like collabora.serverdomain.com)
+collabora.exampleserver.de
+
+*******************************
+*  Setting up Nextcloud now.  *
+*******************************
+ This will take a fiew minutes
+...
+Creating network "nextcloud_default" with the default driver
+Creating nextcloud_collabora ... done
+Creating nextcloud_db        ... done
+Creating nextcloud_redis     ... done
+Creating nextcloud_app       ... done
+
+Waiting for Nextcloud to finish installation process
+...
+Setting Nextcloud variables
+
+*****************************
+*                           *
+*  Nextcloud is installed!  *
+*                           *
+*****************************
+
+recommendations 1.1.0 disabled
+Config value workspace_available for app text set to 0
+
+*****************************
+* Installing Nextcloud Apps *
+*****************************
+approval 1.0.6 enabled
+auto_groups 1.3.1 enabled
+breezedark 22.0.1 enabled
+checksum 1.1.2 enabled
+camerarawpreviews 0.7.12 enabled
+richdocuments 4.2.2 enabled
+cospend 1.3.12 enabled
+electronicsignatures 1.6.2 enabled
+external 3.9.0 enabled
+files_external 1.12.1 enabled
+extract 1.3.2 enabled
+integration_google 1.0.3 enabled
+impersonate 1.9.0 enabled
+issuetemplate 0.7.0 enabled
+files_markdown 2.3.4 enabled
+metadata 0.14.0 enabled
+files_mindmap 0.0.25 enabled
+previewgenerator 3.1.1 enabled
+registration 1.3.0 enabled
+sendent 1.2.7 enabled
+files_snapshots 1.0.2 enabled
+sociallogin 4.8.3 enabled
+unsplash 1.2.3 enabled
+spreed 12.0.1 enabled
+tasks 0.14.1 enabled
+video_converter 1.0.2 enabled
+files_zip 1.0.0 enabled
+
+Setting Collabora URL in Nextcloud
+Config value wopi_url for app richdocuments set to https://collabora.exampleserver.de/
+
+Now let's begin generating file previews!
+
+Adding cronjobs to keep generating previews and update Nextcloud weekly
+
+*****************************************************
+*                                                   *
+*                 Congratulations!                  *
+*    Netcloud is now ready and waiting for you.     *
+*                                                   *
+*****************************************************
+```
+  
+</details>
+
 Fresh Nextcloud instance after installation looks like this:
 ![Nextcloud Login](https://user-images.githubusercontent.com/31454341/130644123-640b51bd-5a0b-4e18-9575-bb4079277b14.jpg)
 ![Nextcloud Collabora Integration](https://user-images.githubusercontent.com/31454341/130644941-8383294c-7009-4aff-93fa-771ec0cf051e.png)
