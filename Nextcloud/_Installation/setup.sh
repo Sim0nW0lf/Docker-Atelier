@@ -62,6 +62,15 @@ then
   echo "Your email password:"
   read smtp_passwd
   sed -i 's/\(.*SMTP_PASSWORD=\)[^ ]* \(.*\)/\1'${smtp_passwd}' \2/g' ../docker-compose.yml
+else
+  #fill all fields with blanks
+  echo "Your SMTP Host (Something like smtp.gmail.com)"
+  read smtp_host
+  sed -i 's/\(.*SMTP_HOST=\)[^ ]* \(.*\)/\1 \2/g' ../docker-compose.yml
+  sed -i 's/\(.*SMTP_NAME=\)[^ ]* \(.*\)/\1 \2/g' ../docker-compose.yml
+  sed -i 's/\(.*MAIL_FROM_ADDRESS=\)[^ ]* \(.*\)/\1 \2/g' ../docker-compose.yml
+  sed -i 's/\(.*MAIL_DOMAIN=\)[^ ]* \(.*\)/\1 \2/g' ../docker-compose.yml
+  sed -i 's/\(.*SMTP_PASSWORD=\)[^ ]* \(.*\)/\1 \2/g' ../docker-compose.yml
 fi
 
 echo ""
