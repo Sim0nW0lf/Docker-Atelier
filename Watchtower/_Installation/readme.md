@@ -14,10 +14,12 @@ Enable two factor authentification, generate an app password and use that with y
 
 ## Installation
 
-Change the necessary values in the docker-compose.yml
-Then use docker-compose to start the container. (You need to be in the directory with the docker-compose.yml file)
+You can copy the Watchtower folder to the directory you want your instance to be installed.
+
+For the following commands I assume you are in the "_Installation" directory!
 ```
-docker-compose up -d
+chmod +x setup.sh
+sudo ./setup.sh
 ```
 
 ## Update Containers that need to be built
