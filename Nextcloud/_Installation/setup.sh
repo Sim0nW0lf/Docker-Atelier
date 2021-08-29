@@ -27,7 +27,6 @@ echo ""
 echo "********************************"
 echo "*  Let's configure Nextcloud!  *"
 echo "********************************"
-echo ""
 
 echo ""
 echo "Enter your Nextcloud domain. (Something like cloud.serverdomain.com)"
@@ -86,6 +85,7 @@ echo "Now enter your MYSQL_PASSWORD:"
 read mysql
 sed -i 's/\(.*MYSQL_PASSWORD=\)[^ ]* \(.*\)/\1'${mysql}' \2/g' ../docker-compose.yml
 
+echo ""
 echo "Enter your Collabora domain. (Something like collabora.serverdomain.com)"
 read coll_domain
 sed -i 's/\(.*collabora.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \2/g' ../docker-compose.yml
@@ -95,7 +95,11 @@ sed -i 's/\(.*collabora-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \
 traefik_ip="$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)"
 sed -i 's!\(.*TRUSTED_PROXIES=\)[^ ]* \(.*\)!\1'${traefik_ip}'/16 \2!g' ../docker-compose.yml
 
-echo "Setting up Nextcloud now. This will take a fiew minutes"
+echo ""
+echo "*******************************"
+echo "*  Setting up Nextcloud now.  *"
+echo "*******************************"
+echo " This will take a fiew minutes"
 echo "..."
 
 #install nextcloud
@@ -106,7 +110,7 @@ echo ""
 echo "Waiting for Nextcloud to finish installation process"
 echo "..."
 touch occ.txt
-while ! grep "Not enough arguments" occ.txt;do docker exec --user www-data nextcloud_app ./occ app:enable &>> occ.txt;sleep 2 ;done
+while grep -q "Not enough arguments" occ.txt;do docker exec --user www-data nextcloud_app ./occ app:enable &>> occ.txt;sleep 2 ;done
 rm occ.txt
 
 echo "Setting Nextcloud variables"
