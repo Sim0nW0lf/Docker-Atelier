@@ -19,7 +19,7 @@ Fresh Nextcloud instance after installation looks like this:
 * [Traefik](https://github.com/Sim0nW0lf/Docker-Atelier/tree/master/2.%20Traefik)
 * Nextcloud URL pointing to your server (something like cloud.exampleserver.com)
 * Collabora URL pointing to your server (something like collabora.exampleserver.com)
-* If you want to receive mails from Nextcloud or use apps like register you need a SMTP Mail.
+* If you want to receive mails from Nextcloud or use apps like "register" you need a SMTP Mail.
 
 This setup only works if you have Traefik installed.
 Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Docker-Atelier) aswell or read this [tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-docker-unter-debian-10-einrichten/) which I used for my Traefik script.
