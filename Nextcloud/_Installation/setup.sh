@@ -110,7 +110,7 @@ echo ""
 echo "Waiting for Nextcloud to finish installation process"
 echo "..."
 touch occ.txt
-while grep -q "Not enough arguments" occ.txt;do docker exec --user www-data nextcloud_app ./occ app:enable &>> occ.txt;sleep 2 ;done
+while ! grep -q "Not enough arguments" occ.txt;do docker exec --user www-data nextcloud_app ./occ app:enable &>> occ.txt;sleep 2 ;done
 rm occ.txt
 
 echo "Setting Nextcloud variables"
