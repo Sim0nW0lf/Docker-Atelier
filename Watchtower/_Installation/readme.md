@@ -40,4 +40,4 @@ To understand whats happening, here is what I do:
 Updating apps that need to be built can be easily be done with a little scipt that will be called with crontabs.
 Here is a little example from my Nextcloud Installation: https://github.com/Sim0nW0lf/Docker-Atelier/blob/c9b4e8f6bc03176662d7b2cfd60ba747711daa0e/Nextcloud/update.sh
 
-I am adding crontabs from my setup script here: https://github.com/Sim0nW0lf/Docker-Atelier/blob/c9b4e8f6bc03176662d7b2cfd60ba747711daa0e/Nextcloud/_Installation/setup.sh#L106-L118
+I am adding crontabs from my setup script here: https://github.com/Sim0nW0lf/Docker-Atelier/blob/22058eee66acd3f7995b1754d239f761c15eb350/Nextcloud/_Installation/setup.sh#L174-L186
