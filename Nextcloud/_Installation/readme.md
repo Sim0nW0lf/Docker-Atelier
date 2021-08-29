@@ -144,8 +144,10 @@ Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Dock
 
 ## Installation
 
+You can copy the Nextcloud folder to the directory you want your instance to be installed.
+
 For the following commands I assume you are in the _Installation directory!
-Check out all files used in the script if you are curious what is happening ;)
+Check out all files used in the script if you are curious what is happening. ;)
 
 * Make setup.sh executable and run setup.sh
 ```
