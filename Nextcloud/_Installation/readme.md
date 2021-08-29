@@ -1,7 +1,7 @@
 # [Nextcloud](https://github.com/nextcloud/docker)
 
-You only have to execute [setup.sh](https://github.com/Sim0nW0lf/Docker-Atelier/blob/7cdbfbeec14a4bca7738bd81aca236412a9e7493/Nextcloud/_Installation/setup.sh)
-Complete setup will take ~8min (If Prerequisites are met already)
+You only have to execute [setup.sh](https://github.com/Sim0nW0lf/Docker-Atelier/blob/7cdbfbeec14a4bca7738bd81aca236412a9e7493/Nextcloud/_Installation/setup.sh).
+The Complete setup will take ~8min (If Prerequisites are met already)
 
 This script will not only configure your installation, install Nextcloud, selected apps and collabora ready to be used.
 It also schedules cronjobs to your root user to keep Nextcloud updated.
@@ -150,7 +150,7 @@ Check out all files used in the script if you are curious what is happening ;)
 * Make setup.sh executable and run setup.sh
 ```
 chmod +x setup.sh
-./setup.sh
+sudo ./setup.sh
 ```
 
 This will take a while, after configuring your installation about 5 minutes.
