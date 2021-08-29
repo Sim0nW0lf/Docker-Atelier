@@ -146,7 +146,7 @@ Be sure to install it from my [Docker-Atelier](https://github.com/Sim0nW0lf/Dock
 
 You can copy the Nextcloud folder to the directory you want your instance to be installed.
 
-For the following commands I assume you are in the _Installation directory!
+For the following commands I assume you are in the "_Installation" directory!
 Check out all files used in the script if you are curious what is happening. ;)
 
 * Make setup.sh executable and run setup.sh
@@ -156,6 +156,8 @@ sudo ./setup.sh
 ```
 
 This will take a while, about 8 minutes. Be patient and **enjoy your NC Installation!**
+
+After Installation the "_Installation" folder can be deleted!
 
 ## Remove Nextcloud
 
