@@ -14,7 +14,7 @@ I hope you can profit from my automations, I surely do!
 
 * Install any other application from this Atelier
 
-Every application can be copied where it should be installed. Then just enter the "_Installation" folder and execute setup.sh.
+Every application folder can be renamed and copied where it should be installed. Then just enter the "_Installation" folder and execute setup.sh.
 ```
 chmod +x setup.sh
 sudo ./setup.sh
