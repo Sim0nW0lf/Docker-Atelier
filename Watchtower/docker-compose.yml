@@ -7,7 +7,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     environment:
-      WATCHTOWER_SCHEDULE: 0 0 4 * * *  (update every night at 4am) https://pkg.go.dev/github.com/robfig/cron@v1.2.0?tab=doc#hdr-CRON_Expression_Format
+      WATCHTOWER_SCHEDULE: 0 0 4 * * *  #(update every night at 4am) https://pkg.go.dev/github.com/robfig/cron@v1.2.0?tab=doc#hdr-CRON_Expression_Format
       WATCHTOWER_CLEANUP: "true"
       WATCHTOWER_NOTIFICATIONS: email  #(Just delete all email labels if you don't want any notifications)
       WATCHTOWER_NOTIFICATION_EMAIL_FROM: exampleserver@gmail.com  #
