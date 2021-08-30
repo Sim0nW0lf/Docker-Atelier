@@ -28,13 +28,13 @@ echo "******************************"
 echo ""
 echo "Enter your Traefik domain. (Something like traefik.serverdomain.com)"
 read domain
-sed -i "s|$(cat ../docker-compose.yml | grep 'traefik.http.routers.traefik.rule=Host')|      - \"traefik.http.routers.traefik.rule=Host(\`${domain}\`)\"  #your Traefik domain (Something like traefik.serverdomain.com)|" ../docker-compose.yml
-sed -i "s|$(cat ../docker-compose.yml | grep 'traefik.http.routers.traefik-secure.rule=Host')|      - \"traefik.http.routers.traefik-secure.rule=Host(\`${domain}\`)\"  #your Traefik domain (Something like traefik.serverdomain.com)|" ../docker-compose.yml
+sed -i 's/\(.*traefik.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
+sed -i 's/\(.*traefik.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
 
 echo ""
 echo "Enter you E-Mail here:"
 read email
-sed -i "s|$(cat ../Container-Data/data/traefik.yml | grep '      email:')|      email: ${email}  ###|" ../Container-Data/data/traefik.yml
+sed -i 's/\(.*email: \)[^ ]* \(.*\)/\1'${email}' \2/g' ../Container-Data/data/traefik.yml
 
 #
 #Generate User:Password
@@ -46,7 +46,7 @@ echo ""
 echo "Enter your Traefik webinterface password:"
 read password
 traefik_credentials=$(echo $(sudo htpasswd -nb $user $password) | sed -e s/\\$/\\$\\$/g)
-sed -i "s|$(cat ../docker-compose.yml | grep 'traefik.http.middlewares.traefik-auth.basicauth.users')|      - \"traefik.http.middlewares.traefik-auth.basicauth.users=${traefik_credentials}\"  #USER:PASSWORD (Password generated with htpasswd. See here: https://mindup.medium.com/add-basic-authentication-in-docker-compose-files-with-traefik-34c781234970)|" ../docker-compose.yml
+sed -i 's/\(.*traefik-auth.basicauth.users=\)[^ ]* \(.*\)/\1'${traefik_credentials}' \2/g' ../docker-compose.yml
 
 docker network create proxy
 
