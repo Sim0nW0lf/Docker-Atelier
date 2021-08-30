@@ -171,4 +171,5 @@ docker-compose down
 docker image prune -a
 rm -r Container-Data
 rm -r /your/data/dir
+crontab -e  #remove all 3 cronjobs for nextcloud. They are commented accordingly.
 ```
