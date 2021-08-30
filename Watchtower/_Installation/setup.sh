@@ -18,7 +18,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
   echo "Tell Watchtower the name of your server:"
   read server_name
-  sed -i 's/\(.*hostname: \)[^ ]* \(.*\)/\1'${server_name}' \2/g' ../docker-compose.yml
+  sed -i 's/\(.*hostname: \)[^#]*#\(.*\)/\1'"${server_name}"'  #\2/g' ../docker-compose.yml
   echo "Your SMTP Host (Something like smtp.gmail.com)"
   read smtp_host
   sed -i 's/\(.*NOTIFICATION_EMAIL_SERVER: \)[^ ]* \(.*\)/\1'${smtp_host}' \2/g' ../docker-compose.yml
