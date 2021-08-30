@@ -46,7 +46,7 @@ echo ""
 echo "Enter your Traefik webinterface password:"
 read password
 traefik_credentials=$(echo $(sudo htpasswd -nb $user $password) | sed -e s/\\$/\\$\\$/g)
-sed -i 's/\(.*traefik-auth.basicauth.users=\)[^ ]* \(.*\)/\1'${traefik_credentials}' \2/g' ../docker-compose.yml
+sed -i 's/\(.*basicauth.users=\)[^ ]* \(.*\)/\1'${traefik_credentials}'" \2/g' ../docker-compose.yml
 
 docker network create proxy
 
