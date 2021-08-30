@@ -2,6 +2,8 @@ version: "3.8"
 services:
   watchtower:
     image: containrrr/watchtower
+    container_name: watchtower
+    hostname: Your Server  #name your server to recognize it in your email notification
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
