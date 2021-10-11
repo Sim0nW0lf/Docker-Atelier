@@ -16,7 +16,7 @@ I hope you can profit from my automations, I surely do!
 
 Every application folder can be renamed and copied where it should be installed. Then just enter the "_Installation" folder and execute setup.sh.
 ```
-chmod +x setup.sh && sudo ./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
 ## App Overview
