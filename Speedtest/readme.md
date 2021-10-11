@@ -6,6 +6,5 @@ I provide the hostgator script here with python3, you might have to change the f
 
 Just make the script executeable and run it:
 ```
-chmod +x speedtest-cli
-./speedtest-cli
+chmod +x speedtest-cli && ./speedtest-cli
 ```
