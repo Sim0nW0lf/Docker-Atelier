@@ -165,10 +165,10 @@ This is how you can delete all files belonging to this Nextcloud installation.
 Now you could setup a completely new instance.
 
 **Be careful!** If you delete your Container-Data and your data dir, all files and user Information will be lost.
+The following commands assume you are in the Nextcloud directory.
 ```
 cd /your/docker-nextcloud/directory
-docker-compose down
-docker image prune -a
+docker-compose down --rmi all
 rm -r Container-Data
 rm -r /your/data/dir
 crontab -e  #remove all 3 cronjobs for nextcloud. They are commented accordingly.
