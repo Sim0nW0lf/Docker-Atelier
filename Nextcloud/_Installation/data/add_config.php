@@ -1,5 +1,4 @@
   'default_phone_region' => 'DE',
-  'check_for_working_wellknown_setup' => false,
   'app_install_overwrite' =>
   array (
     0 => 'previewgenerator',
