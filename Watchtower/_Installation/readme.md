@@ -24,6 +24,7 @@ chmod +x setup.sh && ./setup.sh
 
 ## Update Containers that need to be built
 
+For these installations it's not necessary to do anything. The setup scripts will take care of updates which Watchtower can't handle already.
 Excluding a container is easy, just add a lable to the docker-compose.yml of the app you want to exclude.
 ```
 com.centurylinklabs.watchtower.enable=false
