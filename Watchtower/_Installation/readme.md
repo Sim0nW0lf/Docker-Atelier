@@ -19,8 +19,7 @@ You can copy the Watchtower folder to the directory you want your instance to be
 For the following commands I assume you are in the "_Installation" directory!
 * Make setup.sh executable and run setup.sh
 ```
-chmod +x setup.sh
-sudo ./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
 ## Update Containers that need to be built
