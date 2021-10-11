@@ -151,8 +151,7 @@ Check out all files used in the script if you are curious what is happening. ;)
 
 * Make setup.sh executable and run setup.sh
 ```
-chmod +x setup.sh
-sudo ./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
 This will take a while, about 8 minutes. Be patient and **enjoy your NC Installation!**
