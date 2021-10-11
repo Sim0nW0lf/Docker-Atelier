@@ -18,6 +18,5 @@ I followed [this tutorial](https://goneuland.de/traefik-v2-reverse-proxy-fuer-do
 
 Run the setup script!
 ```
-chmod +x setup.sh
-./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
