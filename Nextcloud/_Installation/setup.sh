@@ -95,6 +95,9 @@ sed -i 's/\(.*collabora-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${coll_domain}'`)" \
 traefik_ip="$(docker inspect traefik | grep '                  "IPAddress"'  | cut -d'"' -f 4)"
 sed -i 's!\(.*TRUSTED_PROXIES=\)[^ ]* \(.*\)!\1'${traefik_ip}'/16 \2!g' ../docker-compose.yml
 
+#set PHP_MEMORY_LIMIT
+sed -i 's/\(.*PHP_MEMORY_LIMIT=\)[^ ]* \(.*\)/\1'$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024 * 1024)))'G \2/g' ../docker-compose.yml
+
 echo ""
 echo "*******************************"
 echo "*  Setting up Nextcloud now.  *"
