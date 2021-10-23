@@ -29,7 +29,7 @@ echo ""
 echo "Enter your Traefik domain. (Something like traefik.serverdomain.com)"
 read domain
 sed -i 's/\(.*traefik.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
-sed -i 's/\(.*traefik.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
+sed -i 's/\(.*secure.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
 
 echo ""
 echo "Enter you E-Mail here:"
