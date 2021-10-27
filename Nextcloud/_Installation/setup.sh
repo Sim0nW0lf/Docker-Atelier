@@ -139,6 +139,7 @@ echo "*****************************"
 #(Just add # before any app you don't want! They are in alphabetic order of the original app names.)
 docker exec --user www-data nextcloud_app ./occ app:enable approval
 docker exec --user www-data nextcloud_app ./occ app:enable auto_groups
+docker exec --user www-data nextcloud_app ./occ app:enable workflow_pdf_converter
 docker exec --user www-data nextcloud_app ./occ app:enable breezedark
 docker exec --user www-data nextcloud_app ./occ app:enable checksum
 docker exec --user www-data nextcloud_app ./occ app:enable camerarawpreviews
