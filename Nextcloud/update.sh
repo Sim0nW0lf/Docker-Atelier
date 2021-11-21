@@ -9,5 +9,6 @@ cd $SCRIPT_DIR
 #Date
 { echo $'\n' ; echo $'Update Date:' ; date ; echo '' ; } > ./update.log
 #Nextcloud Update
-docker-compose down --rmi all >> ./update.log
-docker-compose up -d --build >> ./update.log
+docker-compose down >> ./update.log
+docker image prune -af >> ./update.log
+docker-compose up -d >> ./update.log
