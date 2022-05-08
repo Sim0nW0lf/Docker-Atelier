@@ -93,7 +93,6 @@ services:
     cap_add:
       - MKNOD
     environment:
-      - domain=cloud.example.com  #set url (cloud.example.com)
       - "extra_params=--o:ssl.enable=false --o:ssl.termination=true"
     restart: unless-stopped
     labels:
