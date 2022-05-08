@@ -34,7 +34,6 @@ read domain
 sed -i 's/\(.*nextcloud-app.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
 sed -i 's/\(.*nextcloud-app-secure.rule=Host(`\)[^ ]* \(.*\)/\1'${domain}'`)" \2/g' ../docker-compose.yml
 sed -i 's/\(.*OVERWRITEHOST=\)[^ ]* \(.*\)/\1'${domain}' \2/g' ../docker-compose.yml
-sed -i 's/\(.* domain=\)[^ ]* \(.*\)/\1'${domain}' \2/g' ../docker-compose.yml
 
 echo ""
 echo "Nextcloud Admin Username:"
